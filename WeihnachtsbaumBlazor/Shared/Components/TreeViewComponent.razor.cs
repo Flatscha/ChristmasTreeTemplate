@@ -30,7 +30,7 @@ namespace WeihnachtsbaumBlazor.Shared.Components
                     HeightStart = heightStart,
                     HeightEnd = heightStart + this.Data.BranchHeight,
                     Diameter = this.Data.DiameterBottom + ((i - 1) * diameterFactor),
-                    RotatedDegrees = (int)(i * (this.Data.SpiralOffset + (this.Data.SpiralRotation / this.Data.SpiralCount))) % 360,
+                    RotatedDegrees = (int)((i - 1) * (this.Data.SpiralOffset + (this.Data.SpiralRotation / this.Data.SpiralCount))) % 360,
                 };
 
                 this._branches.Add(dto);
