@@ -1,0 +1,22 @@
+﻿@page "/"
+@using WeihnachtsbaumBlazor.Shared.Components
+@using WeihnachtsbaumBlazor.Shared.Dtos;
+
+<PageTitle>Index</PageTitle>
+
+<TreeDataComponent OnUpdate="this.UpdateData" />
+
+<CascadingValue Value="this._treeData">
+    <TreeViewComponent />
+</CascadingValue>
+
+@code {
+    private TreeData _treeData = new();
+
+    private async Task UpdateData(TreeData treeData)
+    {
+        this._treeData = treeData;
+
+        await this.InvokeAsync(StateHasChanged);
+    }
+}

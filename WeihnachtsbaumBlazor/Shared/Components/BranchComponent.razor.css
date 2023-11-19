@@ -1,0 +1,12 @@
+﻿.branch {
+    transform-style: preserve-3d;
+}
+
+    .branch ::deep .clicked-branch .face {
+        background-color: rgb(16, 100, 0);
+    }
+
+    .branch ::deep .cube {
+        margin-top: var(--distance, 0)
+    }
+

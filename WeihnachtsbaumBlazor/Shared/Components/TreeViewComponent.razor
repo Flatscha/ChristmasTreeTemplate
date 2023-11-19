@@ -1,0 +1,16 @@
+﻿@using WeihnachtsbaumBlazor.Shared.Dtos;
+
+<div class="tree">
+    <div class="rotate" animate="@(this.Data.Rotate.ToString())">
+        <div class="center">
+            <CascadingValue Value="this._clickedBranch">
+                @foreach (var branch in this._branches)
+                {
+                    <BranchComponent Dto="branch" OnClick="() => this._clickedBranch = branch" />
+                }
+            </CascadingValue>
+        </div>
+    </div>
+</div>
+
+<div>@this._clickedBranch?.ToString()</div>

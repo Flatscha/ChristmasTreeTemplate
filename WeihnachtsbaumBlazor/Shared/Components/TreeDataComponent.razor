@@ -1,0 +1,45 @@
+﻿@using WeihnachtsbaumBlazor.Shared.Dtos;
+
+<div class="inputs">
+    <div>Holzstärke</div>
+    <input type="number" @bind-value="@this._treeData.BranchHeight" />
+
+    <div>Holzbreite</div>
+    <input type="number" @bind-value="@this._treeData.BranchWidth" />
+
+    <div>Baumhöhe</div>
+    <input type="number" @bind-value="@this._treeData.TotalHeight" />
+
+    <div>Durchmesser oben</div>
+    <input type="number" @bind-value="@this._treeData.DiameterTop" />
+
+    <div>Durchmesser unten</div>
+    <input type="number" @bind-value="@this._treeData.DiameterBottom" />
+
+    <div>Abstand zwischen Hölzern</div>
+    <input type="number" @bind-value="@this._treeData.Distance" />
+
+    <hr />
+
+    <div>Anzahl Spiralen</div>
+    <input type="number" @bind-value="@this._treeData.SpiralCount" />
+
+    <div>Abstand in einer Spirale</div>
+    <input type="number" @bind-value="@this._treeData.SpiralRotation" />
+
+    <div>Abstand zwischen Spiralen</div>
+    <input type="number" @bind-value="@this._treeData.SpiralOffset" />
+
+    <hr />
+
+    <div>Drehen</div>
+    <input type="checkbox" @bind="@this._treeData.Rotate" />
+
+    <button class="btn btn-primary" @onclick="async ()=> await this.OnUpdate.InvokeAsync(this._treeData)">Update</button>
+</div>
+
+@code {
+    private TreeData _treeData = new();
+
+    [Parameter] public EventCallback<TreeData> OnUpdate { get; set; }
+}

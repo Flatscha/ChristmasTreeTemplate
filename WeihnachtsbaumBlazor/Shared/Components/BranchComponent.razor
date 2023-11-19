@@ -1,0 +1,18 @@
+﻿@using System.Globalization;
+@using WeihnachtsbaumBlazor.Shared.Dtos;
+
+<div class="branch" style="--distance: @(this.Data.Distance)px">
+    <CubeComponent Height="this.Data.BranchWidth" Width="this.Dto.Diameter" Strength="this.Data.BranchHeight"
+                   Bottom="this.Dto.HeightStart" RotatedDegrees="this.Dto.RotatedDegrees" OnClick="async () => await this.OnClick.InvokeAsync()"
+                   Classes="@this.ClickedBranchClass" />
+</div>
+
+@code {
+    [Parameter] public Branch Dto { get; set; }
+    [CascadingParameter] public TreeData Data { get; set; }
+    [CascadingParameter] public Branch ClickedBranch { get; set; }
+    [Parameter] public EventCallback OnClick { get; set; }
+
+    private bool IsCurrentBranchClicked => this.ClickedBranch is not null && this.Dto.Number == this.ClickedBranch.Number;
+    private string ClickedBranchClass => this.IsCurrentBranchClicked ? "clicked-branch" : "";
+}

@@ -1,0 +1,37 @@
+﻿@using WeihnachtsbaumBlazor.Extensions;
+
+<div @onclick="async() => await this.OnClick.InvokeAsync()" class="cube @this.Classes" style="
+    --cube-height: @this.Height.GetCssValue();
+    --cube-width: @this.Width.GetCssValue();
+    --cube-strength: @this.Strength.GetCssValue();
+    --cube-rotated: @(this.RotatedDegrees)deg">
+
+    @if (true)
+    {
+        <div class="face top" />
+        <div class="face bottom" />
+        <div class="face left" />
+        <div class="face right" />
+        <div class="face front" />
+        <div class="face back" />
+    }
+    else
+    {
+        <div class="face top">Top</div>
+        <div class="face bottom">Bottom</div>
+        <div class="face left">Left</div>
+        <div class="face right">Right</div>
+        <div class="face front">Front</div>
+        <div class="face back">Back</div>
+    }
+</div>
+
+@code {
+    [Parameter] public decimal Bottom { get; set; }
+    [Parameter] public decimal Width { get; set; }
+    [Parameter] public decimal Height { get; set; }
+    [Parameter] public decimal Strength { get; set; }
+    [Parameter] public int RotatedDegrees { get; set; }
+    [Parameter] public string Classes { get; set; }
+    [Parameter] public EventCallback OnClick { get; set; }
+}

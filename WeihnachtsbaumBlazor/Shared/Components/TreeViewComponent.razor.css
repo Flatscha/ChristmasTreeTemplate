@@ -1,0 +1,28 @@
+﻿.tree {
+    zoom: 0.25;
+    perspective: 3000px;
+    transform: translateY(45deg) translateX(45deg);
+}
+
+.tree, .rotate, .center {
+    display: grid;
+    justify-items: center;
+}
+
+    .tree :not(:empty) {
+        transform-style: preserve-3d;
+    }
+
+    .rotate[animate="True"] {
+        animation: rotateScene 10s linear infinite
+    }
+
+@keyframes rotateScene {
+    to {
+        transform: rotateY(-360deg)
+    }
+}
+
+.center {
+    /*transform: translateZ(0) rotateX(-35deg) rotateY(0deg) rotateZ(0deg);*/
+}

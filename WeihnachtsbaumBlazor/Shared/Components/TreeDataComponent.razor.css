@@ -1,0 +1,10 @@
+﻿.inputs {
+    display: grid;
+    grid-template-columns: repeat(4, max-content);
+    grid-gap: 0.25rem 1rem;
+    margin-bottom: 2rem;
+}
+
+hr {
+    grid-column-end: span 4;
+}
