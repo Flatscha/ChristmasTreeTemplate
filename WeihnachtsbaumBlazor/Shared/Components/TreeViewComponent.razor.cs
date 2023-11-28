@@ -1,14 +1,20 @@
 using global::Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
+using System.Linq;
 using WeihnachtsbaumBlazor.Shared.Dtos;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WeihnachtsbaumBlazor.Shared.Components
 {
     public partial class TreeViewComponent
     {
+        [Inject] private IJSRuntime _js { get; set; }
         [CascadingParameter] public TreeData Data { get; set; }
 
         private List<Branch> _branches = new();
         private Branch _clickedBranch = null;
+
+        private string _fullInfo => string.Join("\n", this._branches.Select(x => x.ToString()));
 
         protected override async Task OnParametersSetAsync()
         {
@@ -38,5 +44,7 @@ namespace WeihnachtsbaumBlazor.Shared.Components
 
             await base.OnParametersSetAsync();
         }
+
+        private async Task CopyFullInfoToClipboard() => await this._js.InvokeVoidAsync("navigator.clipboard.writeText", this._fullInfo);
     }
 }

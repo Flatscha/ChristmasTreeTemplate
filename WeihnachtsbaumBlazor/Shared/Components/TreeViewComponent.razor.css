@@ -1,4 +1,5 @@
 ﻿.tree {
+    position: relative;
     zoom: 0.25;
     perspective: 3000px;
     transform: translateY(45deg) translateX(45deg);
@@ -17,9 +18,48 @@
         animation: rotateScene 10s linear infinite
     }
 
+    .tree::before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 4rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(0deg, Red, Orange, Yellow, Green, Blue, Indigo,violet);
+        /*animation: slide 1s linear infinite*/
+    }
+
 @keyframes rotateScene {
     to {
         transform: rotateY(-360deg)
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform:translateY(0);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes fade {
+    0% {
+        background-color: orangered;
+    }
+
+    33% {
+        background-color: lightgreen;
+    }
+
+    66% {
+        background-color: lightblue;
+    }
+
+    100% {
+        background-color: orangered;
     }
 }
 

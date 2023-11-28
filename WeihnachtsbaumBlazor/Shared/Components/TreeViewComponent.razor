@@ -1,5 +1,7 @@
 ﻿@using WeihnachtsbaumBlazor.Shared.Dtos;
 
+<div class="btn btn-primary" @onclick="this.CopyFullInfoToClipboard">Daten kopieren</div>
+
 <div class="tree">
     <div class="rotate" animate="@(this.Data.Rotate.ToString())">
         <div class="center">
